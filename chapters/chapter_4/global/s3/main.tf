@@ -1,10 +1,10 @@
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "terraform-up-and-running-state-20230920"
 
-  #Prevent accidental deletion of this S3 Bucket
-  # lifecycle {
-  #   prevent_destroy = true
-  # }
+  # Prevent accidental deletion of this S3 Bucket
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # Enable versioing so you can see the full revision history of your state file
