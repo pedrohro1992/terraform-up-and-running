@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "asg" {
-  source = "/home/poliveira/Workspace/personal/terraform-modules/cluster/asg-rolling-deploy"
+  source = "/home/pedro/Workspace/personal/projects/terraform-modules/cluster/asg-rolling-deploy"
 
   cluster_name  = var.cluster_name
   ami           = data.aws_ami.ubuntu.id
