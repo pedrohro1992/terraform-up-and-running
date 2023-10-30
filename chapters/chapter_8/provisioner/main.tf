@@ -13,6 +13,10 @@ data "aws_ami" "ubuntu" {
 
 }
 
+resource "aws_instance" "name" {
+  instance_type = "t2.micro"
+  ami           = data.aws_ami.ubuntu.name
+}
 
 resource "aws_security_group" "instance" {
   ingress {
