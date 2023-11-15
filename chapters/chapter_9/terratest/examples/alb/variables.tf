@@ -1,9 +1,7 @@
 variable "alb_name" {
-  description = "The name to use for this ALB"
+  description = "The name of the ALB and all its resources"
   type        = string
+  default     = "alb-terratest"
 }
 
-variable "subnet_ids" {
-  description = "The subnet IDs to deploy to"
-  type        = list(string)
-}
+

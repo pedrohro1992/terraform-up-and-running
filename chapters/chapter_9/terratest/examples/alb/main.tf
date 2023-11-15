@@ -1,3 +1,6 @@
+provider "aws" {
+  region = "us-east-2"
+}
 locals {
   http_port    = 80
   any_port     = 0
@@ -6,11 +9,23 @@ locals {
   all_ips      = ["0.0.0.0/0"]
 }
 
+data "aws_vpc" "default" {
+  default = true
+}
+
+data "aws_subnets" "default" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+
+  }
+
+}
 
 resource "aws_lb" "example" {
   name               = var.alb_name
   load_balancer_type = "application"
-  subnets            = var.subnet_ids
+  subnets            = data.aws_subnets.default.ids
   security_groups    = [aws_security_group.aws_lb.id]
 }
 
