@@ -16,11 +16,6 @@ variable "cluster_name" {
   type        = string
   default     = "cluster-example"
 }
-variable "environment" {
-  description = "The name of the environment we're deploying to"
-  type        = string
-  default     = "example"
-}
 
 variable "db_remote_state_bucket" {
   description = "The name of the s3 bucket for the database's remote state"
