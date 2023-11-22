@@ -79,7 +79,11 @@ func createHelloOpts(
       "db_remote_state_bucket": dbOpts.BackendConfig["buket"],
       "db_remote_state_key": dbOpts.BackendConfig["key"],
       "environment": dbOpts.Vars["db_name"],
+      
     },
+    MaxRetries: 3,
+    TimeBetweenRetries: 5 * time.Second,
+    RetryableTerraformErrors: map[string]string{ "RequestError: send request failed": "Throttling issue?" },
   }
   
 }
